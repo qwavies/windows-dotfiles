@@ -78,14 +78,3 @@ function Install-Chocolatey {
         return $false
     }
 }
-
-# Example usage:
-# Install-Chocolatey
-
-# Usage in other scripts:
-# if (Install-Chocolatey) {
-#     Write-Host "Chocolatey is ready to use!"
-#     choco install git -y
-# } else {
-#     Write-Host "Cannot proceed without Chocolatey"
-# }
