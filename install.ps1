@@ -20,5 +20,12 @@
 
 
 . "./install_helper/copy_files.ps1"
+. "./install_helper/choco_verifier.ps1"
 
-copy_to_config -file "./configs/wezterm/wezterm.lua" -destination "./test/"
+# install chocolatey
+if (-not (Install-Chocolatey)) {
+    Write-Error "Chocolatey failed to install. Try running again as administrator"
+}
+
+
+# copy_to_config -file "./configs/wezterm/wezterm.lua" -destination "$HOME/test/test1"
