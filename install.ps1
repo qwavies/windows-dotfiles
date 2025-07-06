@@ -18,6 +18,7 @@
 #
 # tbd...
 
-function install_wezterm {
 
-}
+. "./install_helper/copy_files.ps1"
+
+copy_to_config -file "./configs/wezterm/wezterm.lua" -destination "./test/"
