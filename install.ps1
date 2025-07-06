@@ -18,4 +18,6 @@
 #
 # tbd...
 
+function install_wezterm {
 
+}

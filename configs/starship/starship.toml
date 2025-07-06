@@ -1,0 +1,20 @@
+format = """
+$directory\
+$git_branch\
+$character\
+"""
+
+[directory]
+truncation_length = 0
+style = "bold #a9bed8"
+format = "[$read_only]($read_only_style) [$path]($style) "
+truncation_symbol = "...\\"
+read_only = "\uf023 "
+
+[git_branch]
+format = '[$symbol$branch(:$remote_branch)]($style) '
+style = 'yellow'
+
+[character]
+success_symbol = "[❯](bold)"
+error_symbol = "[❯](bold red)"

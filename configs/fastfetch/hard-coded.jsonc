@@ -1,0 +1,86 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "small",
+        "padding": {
+            "top": 2,
+            "left": 3,
+            "right": 4 
+        }
+    },
+    "display": {
+        "constants": [
+            "██ "
+        ],
+        "stat": false,
+        "size": {
+            "binaryPrefix": "jedec"
+        }
+    },
+    "modules": [
+        {
+            // empty line break
+            "type": "custom"
+        },
+        {
+            "key": "{$1}User",
+            "keyColor": "white",
+            "type": "title",
+            "format": "{user-name}"
+        },
+        {
+            "key": "{$1}Distro",
+            "keyColor": "red",
+            "type": "title",
+            "format": "Windows 11" // THIS IS HARD CODED FOR AESTHETIC PURPOSES I HAVE A NON HARD CODED CONFIG AS WELL
+        },
+        {
+            "key": "{$1}Uptime",
+            "keyColor": "yellow",
+            "type": "uptime"
+        },
+        {
+            "key": "{$1}Terminal",
+            "keyColor": "green",
+            "type": "title",
+            "format": "Wezterm" // THIS IS HARD CODED TO SAVE HALF A SECOND
+        },
+        {
+            "key": "{$1}Font",
+            "keyColor": "cyan",
+            "type": "title",
+            "format": "CaskaydiaMono Nerd Font" // THIS IS HARD CODED TO SAVE HALF A SECOND
+        },
+        {
+            "key": "{$1}Packages",
+            "keyColor": "blue",
+            "type": "packages"
+        },
+        {
+            "key": "{$1}Storage",
+            "keyColor": "magenta",
+            "type": "disk",
+            "folders": "/",
+            "percent": { "green": 75, "yellow":85 },
+            "format": "{size-used} / {size-total} ({size-percentage})"
+        },
+        {
+            "key": "{$1}Memory",
+            "keyColor": "default",
+            "type": "memory",
+            "percent": { "green": 60, "yellow":85 },
+            "format": "{used} / {total} ({percentage})"
+        },
+        {
+            "key": "{$1}Battery",
+            "keyColor": "black",
+            "type": "battery",
+            "format": "{capacity}"
+            //"format": "{capacity} {status}"
+        },
+        {
+            // empty line break
+            "type": "custom"
+        }
+    ]
+}
