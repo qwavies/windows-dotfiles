@@ -1,42 +1,28 @@
-vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
 
--- my own addons on top of NvChad
-vim.wo.relativenumber = true
-vim.o.shell = "powershell"
+vim.o.number = true
+vim.o.relativenumber = true
 vim.o.scrolloff = 6
+vim.o.undofile = true
 
--- bootstrap lazy and all plugins
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+-- set tabs to 3 spaces
+vim.opt.expandtab = true
+vim.opt.tabstop = 3
+vim.opt.shiftwidth = 3
+vim.opt.softtabstop = 3
 
-if not vim.uv.fs_stat(lazypath) then
-  local repo = "https://github.com/folke/lazy.nvim.git"
-  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
-end
+-- replaces the "~" on left sidebar with nothing
+vim.opt.fillchars = { eob = " " }
 
-vim.opt.rtp:prepend(lazypath)
+-- disables nvims inbuilt status bar (replacing with lualine) and makes status bar flush with bottom
+vim.opt.cmdheight = 0
+vim.opt.showmode = false
 
-local lazy_config = require "configs.lazy"
-
--- load plugins
-require("lazy").setup({
-  {
-    "NvChad/NvChad",
-    lazy = false,
-    branch = "v2.5",
-    import = "nvchad.plugins",
-  },
-
-  { import = "plugins" },
-}, lazy_config)
-
--- load theme
-dofile(vim.g.base46_cache .. "defaults")
-dofile(vim.g.base46_cache .. "statusline")
-
-require "options"
-require "nvchad.autocmds"
+require("config.lazy")
 
 vim.schedule(function()
-  require "mappings"
+   vim.o.clipboard = "unnamedplus"
+   require("config.mappings")
+   require("config.autocmds")
 end)
+
