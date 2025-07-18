@@ -28,6 +28,9 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 -- replaces the currently selected word in the entire file
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+-- disables capital D
+vim.keymap.set("n", "D", "<nop>")
+
 -- disables the wretched Q
 vim.keymap.set("n", "Q", "<nop>")
 
