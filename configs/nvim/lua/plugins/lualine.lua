@@ -51,6 +51,7 @@ return {
                   end
                   return ""
                end,
+               "lsp_status",
             },
             lualine_y = {'progress'},
             lualine_z = {'location'}

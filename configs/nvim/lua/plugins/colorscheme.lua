@@ -33,9 +33,30 @@ return {
                   bg = "#707070",
                   -- style = { "italic" },
                },
-               LineNr = { fg = "#BBBBBB" },
-               -- CursorLineNr = { fg = colors.lavender },
-               --
+               Visual = {
+                  -- bg = "#606a6b",
+                  bg = "#535466",
+                  style = {},
+               },
+
+               LineNrAbove = { fg = "#BBBBBB" },
+               LineNrBelow = { fg = "#BBBBBB" },
+               LineNr = {
+                  fg = "#cfd3ff",
+                  bold = true
+               },
+
+
+               -- FloatBorder = { fg = "#cfd3ff" },
+               NormalFloat = { bg = "#444444" },
+               -- TelescopeBorder = { fg = "#cfd3ff" },
+               Pmenu = { bg = "#444444" },
+               PmenuSel = { bg = "#535466"},
+               PmenuBorder = { bg = "#cfd3ff"},
+
+               NotifyBackground = { bg = "#444444" },
+
+
                -- -- Override specific syntax groups
                -- ["@variable"] = { fg = colors.text },
                -- ["@function"] = { fg = colors.blue },
@@ -104,10 +125,14 @@ return {
             native_lsp = {
                enabled = true,
                virtual_text = {
-                  errors = { "italic" },
-                  hints = { "italic" },
-                  warnings = { "italic" },
-                  information = { "italic" },
+                  -- errors = { "italic" },
+                  -- hints = { "italic" },
+                  -- warnings = { "italic" },
+                  -- information = { "italic" },
+                  errors = {},
+                  hints = {},
+                  warnings = {},
+                  information = {},
                },
                underlines = {
                   errors = { "underline" },
