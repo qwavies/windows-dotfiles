@@ -1,16 +1,19 @@
 # install chocolatey(?)
 # - check if running admin perms??
 #
-# wezterm DONE
+# wezterm DONE STILL NEED CONFIGS FOR EVERYTHING!!!!!!!!!!!!!
 # fastfetch DONE
 # starship
 # yazi DONE
-# eza
-# zoxide
-# fzf
-# bat
-# pwsh profile
+# eza DONE
+# zoxide DONE
+# fzf DONE
+# bat DONE
+# ntop DONE
+# pwsh profile DONE
 # scripts???
+#
+# NVIM FROM DIFFERENT REPO
 #
 # glazewm and zebar
 # - open on startup
@@ -26,9 +29,9 @@
 # install chocolatey
 # Install-Chocolatey
 
-# TODO: Add powershell profile first before everything else
-# Write-Host "Copying powershell profile" -ForegroundColor Cyan
-# copy_to_config -file "./powershell/Microsoft.Powershell_profile.ps1" -destination "$PROFILE"
+# Add powershell profile first before everything else
+Write-Host "Copying powershell profile" -ForegroundColor Cyan
+copy_to_config -file "./powershell/Microsoft.Powershell_profile.ps1" -destination "~/Documents/WindowsPowerShell"
 
 # prompt and install wezterm
 do {
@@ -42,6 +45,8 @@ if (-not ($wezterm_install -eq 'n' -or $wezterm_install -eq 'no')) {
     winget install -e `
     wez.wezterm `
     --silent --accept-package-agreements --accept-source-agreements --ignore-warnings
+
+    copy_to_config -file "./configs/wezterm/wezterm.lua" -destination "$HOME/.config/wezterm"
 }
 
 # install fastfetch
@@ -50,8 +55,44 @@ winget install -e `
 Fastfetch-cli.Fastfetch `
 --silent --accept-package-agreements --accept-source-agreements --ignore-warnings
 
+# install starship
+Write-Host "Installing starship (custom terminal prompt)" -foregroundcolor cyan
+winget install -e `
+Starship.Starship `
+--silent --accept-package-agreements --accept-source-agreements --ignore-warnings
+
+# install fzf
+Write-Host "Installing fzf" -foregroundcolor cyan
+winget install -e `
+junegunn.fzf `
+--silent --accept-package-agreements --accept-source-agreements --ignore-warnings
+
+# install zoxide
+Write-Host "Installing zoxide (better cd)" -foregroundcolor cyan
+winget install -e `
+ajeetdsouza.zoxide `
+--silent --accept-package-agreements --accept-source-agreements --ignore-warnings
+
+# install eza
+Write-Host "Installing eza (better ls)" -foregroundcolor cyan
+winget install -e `
+eza-community.eza `
+--silent --accept-package-agreements --accept-source-agreements --ignore-warnings
+
+# install bat
+Write-Host "Installing bat (cat with syntax highlighting)" -foregroundcolor cyan
+winget install -e `
+sharkdp.bat `
+--silent --accept-package-agreements --accept-source-agreements --ignore-warnings
+
+# install ntop
+Write-Host "Installing ntop (top/htop replacement)" -foregroundcolor cyan
+winget install -e `
+gsass1.NTop `
+--silent --accept-package-agreements --accept-source-agreements --ignore-warnings
+
 # install yazi
-Write-Host "Installing yazi" -ForegroundColor Cyan
+Write-Host "Installing yazi (terminal file manager)" -ForegroundColor Cyan
 winget install -e `
 sxyazi.yazi `
 --silent --accept-package-agreements --accept-source-agreements --ignore-warnings

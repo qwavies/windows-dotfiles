@@ -32,7 +32,8 @@ function copy_to_config {
     # Check if destination file already exists
     if (Test-Path $destinationPath -PathType Leaf) {
         do {
-            $response = Read-Host "File '$fileName' already exists in '$destination'. Do you want to overwrite it? (y/n)"
+            Write-Host "File '$fileName' already exists in '$destination'. Do you want to overwrite it? (y/n): " -ForegroundColor Yellow -NoNewLine
+            $response = Read-Host
             $response = $response.ToLower()
         } while ($response -ne 'y' -and $response -ne 'n' -and $response -ne 'yes' -and $response -ne 'no')
         
