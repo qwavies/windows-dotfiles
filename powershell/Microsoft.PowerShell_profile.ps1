@@ -2,7 +2,7 @@
 # fastfetch
 
 # Initialize starship
-$ENV:STARSHIP_CONFIG = "$HOME\.config\starship\starship.toml"
+$env:STARSHIP_CONFIG = "$HOME\.config\starship\starship.toml"
 Invoke-Expression (&starship init powershell)
 
 # Set Aliases for more familiarity in the terminal with linux commands and other shortcuts
@@ -38,6 +38,8 @@ function fzfc {code $(fzf --preview="bat --color=always {}")}
 
 # Set yazi config path
 $env:YAZI_CONFIG_HOME = "$HOME\.config\yazi"
+# Tell yazi the location of file.exe (installed alongside git)
+$env:YAZI_FILE_ONE = "C:\Program Files\Git\usr\bin\file.exe"
 # Custom command and alias for Yazi to be able to change directories
 function ff {
     $tmp = [System.IO.Path]::GetTempFileName()
