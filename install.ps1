@@ -26,7 +26,7 @@
 . "./install_helper/copy_files.ps1"
 . "./install_helper/choco_verifier.ps1"
 
-# install chocolatey
+# NOTE: uncomment to install chocolatey
 # Install-Chocolatey
 
 # Add powershell profile first before everything else
@@ -55,11 +55,15 @@ winget install -e `
 Fastfetch-cli.Fastfetch `
 --silent --accept-package-agreements --accept-source-agreements --ignore-warnings
 
+copy_to_config -file "./configs/fastfetch/config.jsonc" -destination "$HOME/.config/fastfetch"
+
 # install starship
 Write-Host "Installing starship (custom terminal prompt)" -foregroundcolor cyan
 winget install -e `
 Starship.Starship `
 --silent --accept-package-agreements --accept-source-agreements --ignore-warnings
+
+copy_to_config -file "./configs/starship/starship.toml" -destination "$HOME/.config/starship"
 
 # install fzf
 Write-Host "Installing fzf" -foregroundcolor cyan
@@ -96,6 +100,8 @@ Write-Host "Installing yazi (terminal file manager)" -ForegroundColor Cyan
 winget install -e `
 sxyazi.yazi `
 --silent --accept-package-agreements --accept-source-agreements --ignore-warnings
+
+copy_to_config -file "./configs/yazi/yazi.toml" -destination "$HOME/.config/yazi"
 
 # prompt and install optional yazi dependencies
 do {
