@@ -1,32 +1,24 @@
-# install chocolatey(?)
-# - check if running admin perms??
+# TODO:
+# - prompt and install neovim + neovim config from seperate repo
+# - prompt and install window manager (glazewm w/ zebar)
+# - > get glazewm to start on startup
+# - powertoys
+# - translucent TB
+# - > hide taskbar
+
+# still debating:
+# - discord, java, nodejs, obs, spotify, vscode, intellij, rustup, cargo, gcc, obsidian, tldr
+# - prompt for different package manager (choco, scoop)
+# WARN: previous bad experiences with both choco and scoop
+# example: i havent gotten choco's yazi to work
 #
-# wezterm DONE STILL NEED CONFIGS FOR EVERYTHING!!!!!!!!!!!!!
-# fastfetch DONE
-# starship
-# yazi DONE
-# eza DONE
-# zoxide DONE
-# fzf DONE
-# bat DONE
-# ntop DONE
-# pwsh profile DONE
-# scripts???
 #
-# NVIM FROM DIFFERENT REPO
-#
-# glazewm and zebar
-# - open on startup
-#
-# hide taskbar?
-#
-# tbd...
 
 
 . "./install_helper/copy_files.ps1"
 . "./install_helper/choco_verifier.ps1"
 
-# NOTE: uncomment to install chocolatey
+# NOTE: uncomment to install chocolatey (NEED TO RUN AS ADMINISTRATOR)
 # Install-Chocolatey
 
 # Add powershell profile first before everything else
@@ -44,6 +36,22 @@ if (-not ($wezterm_install -eq 'n' -or $wezterm_install -eq 'no')) {
     Write-Host "Installing wezterm..." -ForegroundColor Cyan
     winget install -e `
     wez.wezterm `
+    --silent --accept-package-agreements --accept-source-agreements --ignore-warnings
+
+    copy_to_config -file "./configs/wezterm/wezterm.lua" -destination "$HOME/.config/wezterm"
+}
+
+# primpt and install zen
+do {
+    Write-Host "Do you want to install zen? (web browser) (Y/n): " -Foreground Cyan -NoNewLine
+    $wezterm_install = Read-Host
+    $wezterm_install = $wezterm_install.ToLower()
+} while ($wezterm_install -ne 'y' -and $wezterm_install -ne 'n' -and $wezterm_install -ne 'yes' -and $wezterm_install -ne 'no' -and $wezterm_install -ne '')
+
+if (-not ($wezterm_install -eq 'n' -or $wezterm_install -eq 'no')) {
+    Write-Host "Installing zen..." -ForegroundColor Cyan
+    winget install -e `
+    Zen-Team.Zen-Browser `
     --silent --accept-package-agreements --accept-source-agreements --ignore-warnings
 
     copy_to_config -file "./configs/wezterm/wezterm.lua" -destination "$HOME/.config/wezterm"
@@ -116,6 +124,3 @@ if (-not ($yazi_optional_dep_install -eq 'n' -or $yazi_optional_dep_install -eq 
     Gyan.FFmpeg 7zip.7zip jqlang.jq sharkdp.fd BurntSushi.ripgrep.MSVC junegunn.fzf ajeetdsouza.zoxide ImageMagick.ImageMagick oschwartz10612.Poppler `
     --silent --accept-package-agreements --accept-source-agreements --ignore-warnings
 }
-
-
-# copy_to_config -file "./configs/wezterm/wezterm.lua" -destination "$HOME/test/test1"
